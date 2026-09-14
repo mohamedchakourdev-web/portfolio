@@ -15,10 +15,9 @@ export function Hero() {
       <div className="availability"><span /> FULL STACK WEB DEVELOPER</div>
       <p className="hero-kicker">FULL STACK WEB DEVELOPER <i /> MOROCCO</p>
       <p className="hero-name">Mohamed <span>/</span> Full Stack Web Developer</p>
-      <h1>Building modern web applications with <em>React &amp; Laravel.</em></h1>
+      <h1>Building modern<br/>web applications<br/>with <em>React &amp; Laravel.</em></h1>
       <p className="hero-description">I build responsive frontends, reliable REST APIs and complete business applications with a focus on clean architecture and practical user experience.</p>
       <div className="hero-buttons"><a className="button primary" href="#projects">View projects <ArrowDownRight size={18} /></a><a className="button secondary" href={siteConfig.links.cv} download>Download CV <ArrowDownRight size={18} /></a></div>
-      <div className="hero-stack" aria-label="Core technology stack"><span>CORE STACK</span><div><b>React</b><i>+</i><b>Laravel</b><i>+</i><b>MySQL</b><i>→</i><b>REST API</b></div></div>
     </div>
     <div className="hero-social hero-social-portrait"><a href={siteConfig.links.github}><Github size={16} /> GitHub <ArrowUpRight size={14} /></a><a href={siteConfig.links.linkedin}><Linkedin size={16} /> LinkedIn <ArrowUpRight size={14} /></a></div>
   </section>;
