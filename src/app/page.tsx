@@ -13,7 +13,7 @@ export default function Home() {
         <main>
             <Hero />
             <section id="projects" className="section shell projects">
-                <SectionHeading eyebrow="01 — SELECTED WORK" title="Projects built around real workflows." copy="A mix of interface, API and full-stack work — all focused on useful, well-considered experiences." />
+                <SectionHeading eyebrow="01 — SELECTED WORK" title="Projects built around real workflows" copy="A mix of interface, API and full-stack work — all focused on useful, well-considered experiences" />
                 <div className="project-grid">
                     {projects.map((project) => (
                         <ProjectCard project={project} key={project.slug} />
