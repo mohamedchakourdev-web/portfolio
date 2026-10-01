@@ -17,8 +17,8 @@ export function Hero() {
       <p className="hero-kicker">FULL STACK WEB DEVELOPER <i /> MOROCCO</p>
       <h1>Building Modern<br/>Web Applications<br/>With <em>React &amp; Laravel</em></h1>
       <p className="hero-description">I’m Mohamed, a Full Stack Web Developer specializing in React and Laravel, with a focus on building clean, scalable web applications</p>
-      <div className="hero-buttons"><a className="button primary" href="#projects">View projects <ArrowDownRight size={18} /></a><a className="button secondary" href={siteConfig.links.cv} download>Download CV <ArrowDownRight size={18} /></a></div>
+      <div className="hero-buttons"><a className="button primary" href="#projects">View projects <ArrowDownRight size={18} /></a></div>
     </div>
-    <div className="hero-social hero-social-portrait"><a href={siteConfig.links.github}><Github size={16} /> GitHub <ArrowUpRight size={14} /></a><a href={siteConfig.links.linkedin}><Linkedin size={16} /> LinkedIn <ArrowUpRight size={14} /></a></div>
+    <div className="hero-social hero-social-portrait"><a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={14} /></a><a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={14} /></a></div>
   </section>;
 }

@@ -1,7 +1,44 @@
+'use client';
+
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { initialSlide, projectShots } from '@/data/project-shots';
 import type { Project } from '@/types';
 
 export function ProjectPreview({ project }: { project: Project }) {
-  if (project.slug === 'hrflow-api') return <div className="preview api-preview"><div className="api-header"><span>HRFlow API</span><b>GET</b></div><div className="api-route"><span>api</span><i>/</i><strong>employees</strong><small>200 OK</small></div><div className="api-lines"><i/><i/><i/><i/><i/></div><div className="api-json">{`{`}<br/><span>&nbsp; &quot;data&quot;: [</span><br/><span>&nbsp;&nbsp;{`{ "id": 01, "role": "employee" }`}</span><br/><span>&nbsp; ]</span><br/>{`}`}</div></div>;
-  if (project.slug === 'shopflow') return <div className="preview shop-preview"><div className="preview-side"><b>S</b><i/><i/><i/><i/></div><div className="shop-body"><div className="preview-bar"><span>Overview</span><i/></div><div className="shop-stats"><div><small>Revenue</small><b>$28,430</b><em>+12.8%</em></div><div><small>Orders</small><b>1,284</b><em>+8.2%</em></div></div><div className="chart"><span/><span/><span/><span/><span/><span/><span/></div><div className="shop-table"><i/><i/><i/></div></div></div>;
-  return <div className="preview biz-preview"><div className="biz-top"><span className="mini-brand">B</span><span>Overview</span><small>Sep 2026</small></div><div className="biz-layout"><aside><i/><i/><i/><i/></aside><main><div className="biz-welcome"><small>GOOD MORNING, MOHAMED</small><b>Let&apos;s get things moving.</b><span>+ 18.2% from last month</span></div><div className="biz-cards"><div><small>Revenue</small><b>$46.2k</b><em/></div><div><small>Open orders</small><b>28</b><em/></div></div><div className="biz-chart"><i/><i/><i/><i/><i/><i/><i/></div></main></div></div>;
+  const shots = projectShots[project.slug] ?? [];
+  const offset = initialSlide(project.slug, shots.length);
+  const [current, setCurrent] = useState(offset);
+
+  useEffect(() => {
+    if (shots.length <= 1) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const interval = window.setInterval(() => {
+      setCurrent((index) => (index + 1) % shots.length);
+    }, 2000);
+
+    return () => window.clearInterval(interval);
+  }, [shots.length]);
+
+  if (shots.length === 0) return null;
+
+  return (
+    <div className="preview preview-shot" data-shot={project.slug}>
+      {shots.map((shot, index) => (
+        <Image
+          key={shot.src}
+          src={shot.src}
+          alt={shot.alt}
+          fill
+          sizes="(max-width: 860px) 100vw, 640px"
+          className={`preview-slide ${index === current ? 'is-active' : ''}`}
+          aria-hidden={index !== current}
+          priority={Boolean(project.featured) && index === 0}
+        />
+      ))}
+      <span className="shot-shade" aria-hidden="true" />
+      <span className="tilt-light" aria-hidden="true" />
+    </div>
+  );
 }
